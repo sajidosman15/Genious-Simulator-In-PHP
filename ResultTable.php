@@ -26,7 +26,9 @@ class ResultTable
     }
     function printSecantRow()
     {
-        echo "    " . strval($this->iter) . "\t\t " . $this->xiMinus1 . "   \t  " . $this->xi . "  \t    " . $this->xiplus1 . "\t\t" . $this->error,"<br>";
+        echo("<tr>");
+        echo("<td>".strval($this->iter) . "</td> <td>" . $this->xiMinus1 . "</td><td>" . $this->xi . " </td> <td>" . $this->xiplus1 . "</td><td>" . $this->error."</td>");
+        echo("</tr>");
     }
 }
 

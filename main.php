@@ -1,27 +1,33 @@
 <?php 
 
     //include "BiSection.php";
-    // include "FalsePosition.php";
-    include "NewtonRaphson.php";
+    //include "FalsePosition.php";
+    //include "NewtonRaphson.php";
+    include "Secant.php";
 
     // $function = "-0.6x^2+2.4x+5.5";
     // $xl = "-3";
     // $xu = "2";
     // $iterationNumber = 5;
 
-    $functionX = "7x^3-8x+4";
-    $functionPrimeX = "21x^2-8";
-    $initialRoot = "-1";
-    $initialIteration = 0;
-    $numberOfIteration = 10;
+    // $functionX = "7x^3-8x+4";
+    // $functionPrimeX = "21x^2-8";
+    // $initialRoot = "-1";
+    // $initialIteration = 0;
+    // $numberOfIteration = 10;
 
-    $obj3 = new NewtonRaphson($functionX, $functionPrimeX, $initialIteration, $initialRoot);
-    $obj3->runNewton($numberOfIteration);
+    // $obj3 = new NewtonRaphson($functionX, $functionPrimeX, $initialIteration, $initialRoot);
+    // $obj3->runNewton($numberOfIteration);
 
     // $obj = new FalsePosition($function, $xl, $xu);
     // $obj->runFalsePosition($iterationNumber);
 
 
+    $SecantfunctionX = "x^3-0.165x^2+3.993*10^-4";
+    $XiMinus1 = "0.02";
+    $Xi = "0.05";
+    $obj4 = new Secant($SecantfunctionX, $XiMinus1, $Xi);
+    $obj4->runSecant(5);
 
     // include "Calculation.php";
     // $cal = new Calculation("(-325)x(-193)");

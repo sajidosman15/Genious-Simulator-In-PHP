@@ -45,7 +45,7 @@ class BiSection extends Method
             echo "   (Xr old - Xr new)","<br>";
             echo "=>|-----------------| x100","<br>";
             echo "        Xr new","<br>";
-            $text="((".parent::negativeCheck($this->xrold)."-".parent::negativeCheck($this->xr).")/".parent::negativeCheck($this->xr).")x100";
+            $text="((".parent::negativeCheck($this->xrold)."-".parent::negativeCheck($this->xr).")/".parent::negativeCheck($this->xr).")*100";
             echo "\n     (" . $this->xrold . " - " . $this->xr . ")","<br>";
             echo "=>|-----------------| x100","<br>";
             echo "        " . $this->xr,"<br>";

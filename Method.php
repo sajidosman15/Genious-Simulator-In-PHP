@@ -31,9 +31,9 @@ class Method
             {
                 if ($i != 0)
                 {
-                    if ($this->function[$i - 1] != '(' && $this->function[$i - 1] != '+' && $this->function[$i - 1] != '-' && $this->function[$i - 1] != '/' && $this->function[$i - 1] != 'x')
+                    if ($this->function[$i - 1] != '(' && $this->function[$i - 1] != '+' && $this->function[$i - 1] != '-' && $this->function[$i - 1] != '/' && $this->function[$i - 1] != '*')
                     {
-                        $text = $text . "x" . $x;
+                        $text = $text . "*" . $x;
                     }
                     else 
                     {
@@ -64,9 +64,9 @@ class Method
             {
                 if ($i != 0)
                 {
-                    if ($this->function[$i - 1] != '(' && $this->function[$i - 1] != '+' && $this->function[$i - 1] != '-' && $this->function[$i - 1] != '/' && $this->function[$i - 1] != 'x')
+                    if ($this->function[$i - 1] != '(' && $this->function[$i - 1] != '+' && $this->function[$i - 1] != '-' && $this->function[$i - 1] != '/' && $this->function[$i - 1] != '*')
                     {
-                        $text = $text . "x" . $x;
+                        $text = $text . "*" . $x;
                     }
                     else 
                     {
@@ -95,7 +95,7 @@ class Method
         echo "*  ";
         $result2 = $this->getFof(($this->negativeCheck($num2)));
         echo "<br>=> ";
-        $text = $this->negativeCheck($result1) . "x" . $this->negativeCheck($result2);
+        $text = $this->negativeCheck($result1) . "*" . $this->negativeCheck($result2);
         echo $text."<br>";
         $cal = new Calculation($text);
         $value = $this->decimalFormat($cal->getAnswer());

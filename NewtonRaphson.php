@@ -48,9 +48,9 @@ class NewtonRaphson extends Method
             {
                 if ($i != 0)
                 {
-                    if ($this->function[$i - 1] != '(' && $this->function[$i - 1] != '+' && $this->function[$i - 1] != '-' && $this->function[$i - 1] != '/' && $this->function[$i - 1] != 'x')
+                    if ($this->function[$i - 1] != '(' && $this->function[$i - 1] != '+' && $this->function[$i - 1] != '-' && $this->function[$i - 1] != '/' && $this->function[$i - 1] != '*')
                     {
-                        $text = $text . "x" . $x;
+                        $text = $text . "*" . $x;
                     }
                     else 
                     {
@@ -81,9 +81,9 @@ class NewtonRaphson extends Method
             {
                 if ($i != 0)
                 {
-                    if ($this->function[$i - 1] != '(' && $this->functionPrimeX[$i - 1] != '+' && $this->functionPrimeX[$i - 1] != '-' && $this->functionPrimeX[$i - 1] != '/' && $this->functionPrimeX[$i - 1] != 'x')
+                    if ($this->function[$i - 1] != '(' && $this->functionPrimeX[$i - 1] != '+' && $this->functionPrimeX[$i - 1] != '-' && $this->functionPrimeX[$i - 1] != '/' && $this->functionPrimeX[$i - 1] != '*')
                     {
-                        $text = $text . "x" . $x;
+                        $text = $text . "*" . $x;
                     }
                     else 
                     {
@@ -112,7 +112,7 @@ class NewtonRaphson extends Method
         echo "<br>      ( X" . strval(($this->initialIteration + 1)) . " - X" . strval(($this->initialIteration)) . " )","<br>";
         echo "=>|-----------------| x100","<br>";
         echo "\t  X" . strval(($this->initialIteration + 1)),"<br>";
-        $text = "((" . parent::negativeCheck($this->oldRoot) . "-" . parent::negativeCheck($this->newRoot) . ")/" . parent::negativeCheck($this->newRoot) . ")x100";
+        $text = "((" . parent::negativeCheck($this->oldRoot) . "-" . parent::negativeCheck($this->newRoot) . ")/" . parent::negativeCheck($this->newRoot) . ")*100";
         echo "<br>     (" . $this->newRoot . " - " . $this->oldRoot . ")","<br>";
         echo "=>|-----------------| x100","<br>";
         echo "         " . $this->newRoot,"<br>";

@@ -32,7 +32,7 @@ class FalsePosition extends Method
         echo("                 ".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xl)))." - ".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xu)))."<br>");
         
         
-        $text=parent::negativeCheck($this->xu)."-((".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xu)))."x(".parent::negativeCheck($this->xl)."-".parent::negativeCheck($this->xu)."))/(".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xl)))."-".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xu)))."))";
+        $text=parent::negativeCheck($this->xu)."-((".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xu)))."*(".parent::negativeCheck($this->xl)."-".parent::negativeCheck($this->xu)."))/(".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xl)))."-".parent::negativeCheck(parent::getFofFalse(parent::negativeCheck($this->xu)))."))";
                 
         $cal = new Calculation($text);
         $value = $cal->getAnswer();
@@ -52,7 +52,7 @@ class FalsePosition extends Method
             echo "   (Xr old - Xr new)","<br>";
             echo "=>|-----------------| x100","<br>";
             echo "        Xr new","<br>";
-            $text="((".parent::negativeCheck($this->xrold)."-".parent::negativeCheck($this->xr).")/".parent::negativeCheck($this->xr).")x100";
+            $text="((".parent::negativeCheck($this->xrold)."-".parent::negativeCheck($this->xr).")/".parent::negativeCheck($this->xr).")*100";
             echo "<br>     (" . $this->xrold . " - " . $this->xr . ")","<br>";
             echo "=>|-----------------| x100","<br>";
             echo "        " . $this->xr,"<br>";

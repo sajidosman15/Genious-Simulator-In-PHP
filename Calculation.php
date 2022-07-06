@@ -98,7 +98,7 @@ class Calculation
                 $lastchar = $texts1[$txt1lngt - 1];
                 if ($lastchar >= '0' && $lastchar <= '9')
                 {
-                    $texts1 =$texts1 . "x";
+                    $texts1 =$texts1 . "*";
                 }
             }
             $ans = $this->calculate($texts2);
@@ -163,10 +163,10 @@ class Calculation
                 $number2 = $this->calculate($texts2);
                 return $number1 - $number2;
             }
-            else if ((strpos($text,"x") !== false ))
+            else if ((strpos($text,"*") !== false ))
             {
-                $texts1 = substr($text,0,strripos($text,"x"));
-                $texts2 = substr($text,strripos($text,"x") + 1,strlen($text));
+                $texts1 = substr($text,0,strripos($text,"*"));
+                $texts2 = substr($text,strripos($text,"*") + 1,strlen($text));
                 $number1 = $this->calculate($texts1);
                 $number2 = $this->calculate($texts2);
                 return $number1 * $number2;
@@ -191,7 +191,7 @@ class Calculation
                 {
                     switch ($texts2[0]) {
                         case '√':
-                            $texts2 = strval($val) . "x" . $texts2;
+                            $texts2 = strval($val) . "*" . $texts2;
                             // if character after % is a root
                             break;
                         case '^':
@@ -298,7 +298,7 @@ class Calculation
                     else 
                     {
                         // if character before root is a number or square
-                        $texts2 =$texts2 . "x" . strval($val);
+                        $texts2 =$texts2 . "*" . strval($val);
                     }
                     $val = $this->calculate($texts2);
                 }
