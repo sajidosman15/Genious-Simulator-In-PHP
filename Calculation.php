@@ -11,6 +11,12 @@ class Calculation
     function getAnswer()
     {
         $ans = 0;
+        // Change the Root sign
+        if ((strpos($this->text,"sqrt") !== false ))
+        {
+            $this->text = str_replace("sqrt","√",$this->text);
+        }
+
         if ((strpos($this->text,"^-") !== false ))
         {
             $this->text = str_replace("^-","^~",$this->text);

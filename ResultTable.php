@@ -30,6 +30,13 @@ class ResultTable
         echo("<td>".strval($this->iter) . "</td> <td>" . $this->xiMinus1 . "</td><td>" . $this->xi . " </td> <td>" . $this->xiplus1 . "</td><td>" . $this->error."</td>");
         echo("</tr>");
     }
+
+    function printFixedPointRow()
+    {
+        echo("<tr>");
+        echo("<td>".strval($this->iter) . "</td> <td>" . strval($this->i) . "</td> <td>X" . strval($this->i) . " = " . $this->xi . "</td> <td>X" . strval(($this->i + 1)) . " = " . $this->xiplus1 . "</td> <td>" . $this->error . "</td>");
+        echo("</tr>");
+    }
 }
 
 ?>

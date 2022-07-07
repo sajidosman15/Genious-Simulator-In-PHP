@@ -3,7 +3,8 @@
     //include "BiSection.php";
     //include "FalsePosition.php";
     //include "NewtonRaphson.php";
-    include "Secant.php";
+    //include "Secant.php";
+    //include "FixedPoint.php";
 
     // $function = "-0.6x^2+2.4x+5.5";
     // $xl = "-3";
@@ -23,15 +24,22 @@
     // $obj->runFalsePosition($iterationNumber);
 
 
-    $SecantfunctionX = "x^3-0.165x^2+3.993*10^-4";
-    $XiMinus1 = "0.02";
-    $Xi = "0.05";
-    $obj4 = new Secant($SecantfunctionX, $XiMinus1, $Xi);
-    $obj4->runSecant(5);
+    // $SecantfunctionX = "x^3-0.165x^2+3.993*10^-4";
+    // $XiMinus1 = "0.02";
+    // $Xi = "0.05";
+    // $obj4 = new Secant($SecantfunctionX, $XiMinus1, $Xi);
+    // $obj4->runSecant(5);
 
-    // include "Calculation.php";
-    // $cal = new Calculation("(-325)x(-193)");
-    // echo($cal->getAnswer());
+
+    // $fixedfunctionX = "(x+10)^(1/4)";
+    // $fixedOldRoot = "4";
+    // $FinitialIteration = 0;
+    // $obj5 = new FixedPoint($fixedfunctionX, $fixedOldRoot, $FinitialIteration);
+    //$obj5->runFixedPoint(10);
+
+    include "Calculation.php";
+    $cal = new Calculation("sqrt(sqrt(16))");
+    echo($cal->getAnswer());
     // $t="(4)+(2)";
     // echo(strlen($t));
 ?>
