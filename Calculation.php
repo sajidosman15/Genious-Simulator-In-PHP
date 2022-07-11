@@ -217,7 +217,7 @@ class Calculation
                 $texts1 = substr($text,strripos($text,"n") + 1,strlen($text));
                 $val = $this->calculate($texts1);
                 $val = log($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }
@@ -226,7 +226,7 @@ class Calculation
                 $texts1 = substr($text,strripos($text,"g") + 1,strlen($text));
                 $val = $this->calculate($texts1);
                 $val = log10($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }
@@ -235,7 +235,7 @@ class Calculation
                 $texts1 = substr($text,strripos($text,"e") + 1,strlen($text));
                 $val = $this->calculate($texts1);
                 $val = exp($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }
@@ -245,7 +245,7 @@ class Calculation
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = sin($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }
@@ -255,7 +255,7 @@ class Calculation
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = cos($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }
@@ -265,7 +265,7 @@ class Calculation
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = tan($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }
@@ -275,10 +275,10 @@ class Calculation
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = tan($val);
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 $val = 1.0 / $val;
-                $format = number_format($val, 3);
+                $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
             }

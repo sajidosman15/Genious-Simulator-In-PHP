@@ -3,9 +3,10 @@
     //include "BiSection.php";
     //include "FalsePosition.php";
     //include "NewtonRaphson.php";
-    //include "Secant.php";
-    //include "FixedPoint.php";
-    include "LuDecomposition.php";
+    // include "Secant.php";
+    include "FixedPoint.php";
+    // include "LuDecomposition.php";
+    // include "GaussianElimination.php";
 
 
     // $function = "-0.6x^2+2.4x+5.5";
@@ -33,11 +34,11 @@
     // $obj4->runSecant(5);
 
 
-    // $fixedfunctionX = "(x+10)^(1/4)";
-    // $fixedOldRoot = "4";
-    // $FinitialIteration = 0;
-    // $obj5 = new FixedPoint($fixedfunctionX, $fixedOldRoot, $FinitialIteration);
-    //$obj5->runFixedPoint(10);
+    $fixedfunctionX = "(x+10)^(1/4)";
+    $fixedOldRoot = "4";
+    $FinitialIteration = 0;
+    $obj5 = new FixedPoint($fixedfunctionX, $fixedOldRoot, $FinitialIteration);
+    $obj5->runFixedPoint(10);
 
     $size = 3;
     $array = array_fill(0,$size,array_fill(0,$size,0.0));
@@ -58,8 +59,11 @@
     $ZVector[1] = 177.2;
     $ZVector[2] = 279.2;
 
-    $obj6 = new LuDecomposition($array, $ZVector, $size);
-    $obj6->runLuDecomposition();
+    // $obj6 = new LuDecomposition($array, $ZVector, $size);
+    // $obj6->runLuDecomposition();
+
+    // $obj7 = new GaussianElimination($array, $ZVector, $size);
+    // $obj7->runGaussianElimination();
 
     // include "Calculation.php";
     // $cal = new Calculation("sqrt(sqrt(16))");
