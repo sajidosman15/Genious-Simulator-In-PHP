@@ -16,5 +16,3 @@ class Process
     public $rrx;
     public $id;
 }
-
-?>
