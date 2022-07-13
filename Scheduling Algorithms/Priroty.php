@@ -185,6 +185,7 @@ class Priroty
         echo ("<th>Process</th><th>AT</th><th>ST</th><th>PT</th><th>CT</th><th>TAT</th><th>WT</th>");
         echo("</tr>");
         for ($i = 0; $i < count($name); $i++) {
+            echo("<tr>");
             $this->process[$i]->tat = $this->process[$i]->ct - $this->process[$i]->at;
             $this->process[$i]->wt = $this->process[$i]->tat - $this->process[$i]->st;
             echo("<td>".$this->process[$i]->name . "</td><td>" . strval((int)$this->process[$i]->at) . "</td><td>" . strval((int)$this->process[$i]->st) . "</td><td>" . strval((int)$this->process[$i]->priroty) . "</td><td>" . strval((int)$this->process[$i]->ct) . "</td>");
