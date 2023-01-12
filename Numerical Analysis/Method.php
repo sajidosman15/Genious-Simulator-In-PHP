@@ -8,6 +8,7 @@ class Method
     {
         $this->function = $function;
     }
+
     function negativeCheck($val)
     {
         if ($val[0] == '-')
@@ -16,6 +17,7 @@ class Method
         }
         return $val;
     }
+    
     function decimalFormat($val)
     {
         $num = floatval($val);

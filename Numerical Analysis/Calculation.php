@@ -4,53 +4,44 @@ class Calculation
 {
     private $text;
     private $error = false;
-    function  __construct($text)
+    public function __construct($text)
     {
         $this->text = $text;
     }
-    function getAnswer()
+    public function getAnswer()
     {
         $ans = 0;
         // Change the Root sign
-        if ((strpos($this->text,"sqrt") !== false ))
-        {
-            $this->text = str_replace("sqrt","√",$this->text);
+        if ((strpos($this->text, "sqrt") !== false)) {
+            $this->text = str_replace("sqrt", "√", $this->text);
         }
 
-        if ((strpos($this->text,"^-") !== false ))
-        {
-            $this->text = str_replace("^-","^~",$this->text);
+        if ((strpos($this->text, "^-") !== false)) {
+            $this->text = str_replace("^-", "^~", $this->text);
         }
         // Change the minus sign
-        if ((strpos($this->text,"-") !== false ))
-        {
-            $this->text = str_replace("-","k",$this->text);
+        if ((strpos($this->text, "-") !== false)) {
+            $this->text = str_replace("-", "k", $this->text);
         }
         // If text contain brackets then remove the brackets
-        if ((strpos($this->text,"(") !== false ) || (strpos($this->text,")") !== false ))
-        {
+        if ((strpos($this->text, "(") !== false) || (strpos($this->text, ")") !== false)) {
             $this->text = $this->firstBracketCheck($this->text);
             // reducing first bracket
-            if ((strpos($this->text,".") !== false ))
-            {
-                $this->text = str_replace(".","·",$this->text);
+            if ((strpos($this->text, ".") !== false)) {
+                $this->text = str_replace(".", "·", $this->text);
             }
             $ans = $this->calculate($this->text);
-        }
-        else 
-        {
+        } else {
             $ans = $this->calculate($this->text);
         }
-        if ($this->error == true)
-        {
+        if ($this->error == true) {
             return "Error";
         }
         return strval($ans) . "";
     }
-    function firstBracketCheck($text)
+    public function firstBracketCheck($text)
     {
-        try
-        {
+        try {
             $firstindex = -1;
             $lastindex = -1;
             $texts1;
@@ -59,51 +50,38 @@ class Calculation
             // Identify the indexes of brackets and
             //            separate them in different module
             $text=trim($text);
-            for ($i = 0; $i < strlen($text); $i++)
-            {
-                if ($text[$i] == "(")
-                {
+            for ($i = 0; $i < strlen($text); $i++) {
+                if ($text[$i] == "(") {
                     $firstindex = $i;
                 }
-                if ($text[$i] == ")")
-                {
+                if ($text[$i] == ")") {
                     $lastindex = $i;
                     break;
                 }
             }
-            $texts2 = substr($text,$firstindex + 1,$lastindex-($firstindex + 1));
-            
+            $texts2 = substr($text, $firstindex + 1, $lastindex-($firstindex + 1));
+
             // texts inside the bracket is storing here
             // if bracket is not the first character
             //            then store those first characters
-            if ($firstindex != 0)
-            {
-                $texts1 = substr($text,0,$firstindex);
-                
-            }
-            else 
-            {
+            if ($firstindex != 0) {
+                $texts1 = substr($text, 0, $firstindex);
+            } else {
                 $texts1 = "";
             }
             // if brackets is not the last character then
             //            store those last characters
-            if ($lastindex != strlen($text))
-            {
-                $texts3 = substr($text,$lastindex + 1,strlen($text));
-                
-            }
-            else 
-            {
+            if ($lastindex != strlen($text)) {
+                $texts3 = substr($text, $lastindex + 1, strlen($text));
+            } else {
                 $texts3 = "";
             }
             // if the last character of the first part of string does not
             //            contain a symbol then add multiplication there
             $txt1lngt = strlen($texts1);
-            if ($txt1lngt != 0)
-            {
+            if ($txt1lngt != 0) {
                 $lastchar = $texts1[$txt1lngt - 1];
-                if ($lastchar >= '0' && $lastchar <= '9')
-                {
+                if ($lastchar >= '0' && $lastchar <= '9') {
                     $texts1 =$texts1 . "*";
                 }
             }
@@ -113,88 +91,70 @@ class Calculation
             //echo($text."<br>");
 
             // marge part1,value of bracket and part3
-            // if the text contain more brackets then again pass it 
+            // if the text contain more brackets then again pass it
             //            to the function untill all brackets are reduced
-            if ((strpos($text,"(") !== false ) || (strpos($text,")") !== false ))
-            {
-                if ((strpos($text,".") !== false ))
-                {
-                    $text = str_replace(".","·",$text);
+            if ((strpos($text, "(") !== false) || (strpos($text, ")") !== false)) {
+                if ((strpos($text, ".") !== false)) {
+                    $text = str_replace(".", "·", $text);
                 }
                 $text = $this->firstBracketCheck($text);
-
             }
             return $text;
-        } catch ( Exception $ex) {
+        } catch (Exception $ex) {
             $this->error = true;
             return strval(0) . "";
         }
     }
-    function calculate($text)
+    public function calculate($text)
     {
         //echo($text."<br>");
-        try
-        {
-            if (!empty($text)){
-                if ($text[0] == '+')
-                {
+        try {
+            if (!empty($text)) {
+                if ($text[0] == '+') {
                     // if the first character is plus then remove it
-                    $text = substr($text,1,strlen($text));
+                    $text = substr($text, 1, strlen($text));
                     echo($text);
-                }
-                else if ($text[0] == 'k')
-                {
+                } elseif ($text[0] == 'k') {
                     // if the first character is minus then remove it
                     $text = "0" . $text;
                     //echo($text."<br>");
-                    
                 }
             }
             // separate the parts of before sign and after sign
             //            then calculate them.
-            if ((strpos($text,"+") !== false ))
-            {
-                $texts1 = substr($text,0,strripos($text,"+"));
-                $texts2 = substr($text,strripos($text,"+") + 1,strlen($text));
+            if ((strpos($text, "+") !== false)) {
+                $texts1 = substr($text, 0, strripos($text, "+"));
+                $texts2 = substr($text, strripos($text, "+") + 1, strlen($text));
                 $number1 = $this->calculate($texts1);
                 $number2 = $this->calculate($texts2);
                 return $number1 + $number2;
-            }
-            else if ((strpos($text,"k") !== false ))
-            {
+            } elseif ((strpos($text, "k") !== false)) {
                 //echo($text."<br>");
-                $texts1 = substr($text,0,strripos($text,"k"));
-                $texts2 = substr($text,strripos($text,"k") + 1,strlen($text));
+                $texts1 = substr($text, 0, strripos($text, "k"));
+                $texts2 = substr($text, strripos($text, "k") + 1, strlen($text));
                 $number1 = $this->calculate($texts1);
                 $number2 = $this->calculate($texts2);
                 return $number1 - $number2;
-            }
-            else if ((strpos($text,"*") !== false ))
-            {
-                $texts1 = substr($text,0,strripos($text,"*"));
-                $texts2 = substr($text,strripos($text,"*") + 1,strlen($text));
+            } elseif ((strpos($text, "*") !== false)) {
+                $texts1 = substr($text, 0, strripos($text, "*"));
+                $texts2 = substr($text, strripos($text, "*") + 1, strlen($text));
                 $number1 = $this->calculate($texts1);
                 $number2 = $this->calculate($texts2);
                 return $number1 * $number2;
-            }
-            else if ((strpos($text,"/") !== false ))
-            {
+            } elseif ((strpos($text, "/") !== false)) {
                 // echo($text);
-                $texts1 = substr($text,0,strripos($text,"/"));
-                $texts2 = substr($text,strripos($text,"/") + 1,strlen($text));
+                $texts1 = substr($text, 0, strripos($text, "/"));
+                $texts2 = substr($text, strripos($text, "/") + 1, strlen($text));
                 $number1 = $this->calculate($texts1);
                 $number2 = $this->calculate($texts2);
                 //echo(strlen($texts2));
                 return $number1 / $number2;
-            }
-            else if ((strpos($text,"%") !== false ))
-            {
-                $texts1 = substr($text,0,strripos($text,"%"));
-                $texts2 = substr($text,strripos($text,"%") + 1,strlen($text));
+            } elseif ((strpos($text, "%") !== false)) {
+                $texts1 = substr($text, 0, strripos($text, "%"));
+                $texts2 = substr($text, strripos($text, "%") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = $val / 100;
-                if (!empty($texts2))
-                {
+                if (!empty($texts2)) {
                     switch ($texts2[0]) {
                         case '√':
                             $texts2 = strval($val) . "*" . $texts2;
@@ -211,67 +171,53 @@ class Calculation
                     $val = $this->calculate($texts2);
                 }
                 return $val;
-            }
-            else if ((strpos($text,"ln") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"n") + 1,strlen($text));
+            } elseif ((strpos($text, "ln") !== false)) {
+                $texts1 = substr($text, strripos($text, "n") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = log($val);
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"log") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"g") + 1,strlen($text));
+            } elseif ((strpos($text, "log") !== false)) {
+                $texts1 = substr($text, strripos($text, "g") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = log10($val);
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"e") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"e") + 1,strlen($text));
+            } elseif ((strpos($text, "e") !== false)) {
+                $texts1 = substr($text, strripos($text, "e") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = exp($val);
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"sin") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"n") + 1,strlen($text));
+            } elseif ((strpos($text, "sin") !== false)) {
+                $texts1 = substr($text, strripos($text, "n") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = sin($val);
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"cos") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"s") + 1,strlen($text));
+            } elseif ((strpos($text, "cos") !== false)) {
+                $texts1 = substr($text, strripos($text, "s") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = cos($val);
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"tan") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"n") + 1,strlen($text));
+            } elseif ((strpos($text, "tan") !== false)) {
+                $texts1 = substr($text, strripos($text, "n") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = tan($val);
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"cot") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"t") + 1,strlen($text));
+            } elseif ((strpos($text, "cot") !== false)) {
+                $texts1 = substr($text, strripos($text, "t") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $val = deg2rad($val);
                 $val = tan($val);
@@ -281,62 +227,47 @@ class Calculation
                 $format = round($val, 3);
                 $val = floatval($format);
                 return $val;
-            }
-            else if ((strpos($text,"√") !== false ))
-            {
-                $texts1 = substr($text,strripos($text,"√") + 3,strlen($text));
-                $texts2 = substr($text,0,strripos($text,"√"));
-                if ($texts1[0] == '^')
-                {
+            } elseif ((strpos($text, "√") !== false)) {
+                $texts1 = substr($text, strripos($text, "√") + 3, strlen($text));
+                $texts2 = substr($text, 0, strripos($text, "√"));
+                if ($texts1[0] == '^') {
                     // if character after root is a square
                     $this->error = true;
                     return 0;
                 }
                 $val = $this->calculate($texts1);
                 $val = sqrt($val);
-                if (!empty($texts2))
-                {
-                    if (mb_substr($texts2, 0, 1) == '√')
-                    {
+                if (!empty($texts2)) {
+                    if (mb_substr($texts2, 0, 1) == '√') {
                         // if character before root is a root
                         $texts2 =$texts2 . $val;
-                    }
-                    else 
-                    {
+                    } else {
                         // if character before root is a number or square
                         $texts2 =$texts2 . "*" . strval($val);
                     }
                     $val = $this->calculate($texts2);
                 }
                 return $val;
-            }
-            else if ((strpos($text,"^") !== false ))
-            {
-                if ((strpos($text,"^~") !== false ))
-                {
-                    $text = str_replace("^~","^-",$text);
+            } elseif ((strpos($text, "^") !== false)) {
+                if ((strpos($text, "^~") !== false)) {
+                    $text = str_replace("^~", "^-", $text);
                 }
-                $texts1 = substr($text,0,strripos($text,"^"));
-                $texts2 = substr($text,strripos($text,"^") + 1,strlen($text));
+                $texts1 = substr($text, 0, strripos($text, "^"));
+                $texts2 = substr($text, strripos($text, "^") + 1, strlen($text));
                 $val = $this->calculate($texts1);
                 $power = $this->calculate($texts2);
-                $val = pow($val,$power);
+                $val = pow($val, $power);
                 return $val;
-            }
-            else 
-            {
+            } else {
                 // base case. replace the point and convert string to double
-                if ((strpos($text,"·") !== false ))
-                {
-                    $text = str_replace("·",".",$text);
+                if ((strpos($text, "·") !== false)) {
+                    $text = str_replace("·", ".", $text);
                 }
                 return floatval($text);
             }
-        } catch ( Exception $ex) {
+        } catch (Exception $ex) {
             $this->error = true;
             return 0;
         }
     }
 }
-
-?>

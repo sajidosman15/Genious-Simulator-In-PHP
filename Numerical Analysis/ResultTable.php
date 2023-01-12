@@ -16,9 +16,11 @@ class ResultTable
     public $fofxi;
     public $fprimeofxi;
     public $xiplus1;
-    function printRow()
+    public function printRow()
     {
-        echo strval($this->iter) . "\t" . $this->xl . "\t\t" . $this->xu . "\t\t" . $this->xr . "\t\t" . $this->error . "\t\t" . $this->fofxl . "\t\t" . $this->fofxu . "\t\t" . $this->fofxr,"<br>";
+        echo("<tr>");
+        echo("<td>".strval($this->iter) . "</td> <td>" . $this->xl . "</td> <td>" . $this->xu . "</td> <td>" . $this->xr . "</td> <td>" . $this->error . "</td> <td>" . $this->fofxl . "</td> <td>" . $this->fofxu . "</td> <td>" . $this->fofxr."</td>");
+        echo("</tr>");
     }
     function printRaphsonRow()
     {

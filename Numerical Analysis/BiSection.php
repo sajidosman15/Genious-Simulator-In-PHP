@@ -119,12 +119,20 @@ class BiSection extends Method
             echo "","<br>";
         }
         echo "<br>","<br>";
+        echo("<style>
+        table, th, td {
+          border:1px solid black;
+        }
+        </style>");
         echo "****Table****" ,"<br>";
-        echo "Iter\tXl\t\tXu\t\tXr\t\tError\t\tf(xl)\t\tf(xu)\t\tf(xr)","<br>";
-        for ($i = 0; $i < $j; $i++)
-        {
+        echo("<table>");
+        echo("<tr>");
+        echo "<th>Iter</th><th>Xl</th><th>Xu</th><th>Xr</th><th>Error</th><th>f(Xl)</th><th>f(xu)</th><th>f(xr)</th>";
+        echo("</tr>");
+        for ($i = 0; $i < $j; $i++) {
             $table[$i]->printRow();
         }
+        echo("</table>");
         echo "","<br>";
     }
 }
